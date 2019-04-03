@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2, 
+	"name": "Word Finder",
+	"version": "1.0",
+	"description": "A word finding extension that locates all the instances of the searched word and changes their font color",
+	"icons": {
+		"256": "icon_256.png",
+		"128": "icon_128.png",
+		"48": "icon_48.png",
+		"32": "icon_32.png",
+		"16": "icon_16.png"
+	},
+
+	"browser_action":{
+		"default_icon": "icon_16.png",
+		"default_popup": "popup.html"
+	},
+
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [ 
+            	"jquery-3.3.1.min.js",
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+
+	"background": {
+		"scripts" : ["background.js"],
+		"persistent" : false
+	},
+
+	"permissions": [
+		"storage", 
+		"notifications",
+		"contextMenus", 
+		"tabs"
+	]
+}
